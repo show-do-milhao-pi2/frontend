@@ -2,7 +2,7 @@ import React, { useContext } from 'react';
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import { Context } from './Context/AuthContext';
-
+// componente onde se define as rotas, o que será carregado em cada rota e quais rotas são públicas ou privadas
 import Login from './pages/Login';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp';

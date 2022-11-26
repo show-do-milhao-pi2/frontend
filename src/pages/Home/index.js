@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from 'react';
-import Header from '../../components/Header';
+import React from 'react';
 import showmilhao from '../../assets/images/showmilhao.png'
 import play from '../../assets/images/play.png'
 import { Div } from './styled';

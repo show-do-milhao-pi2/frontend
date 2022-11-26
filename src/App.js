@@ -9,6 +9,8 @@ import GlobalStyle from './globalStyle';
 import { useState } from 'react';
 import { useEffect } from 'react';
 
+// componente principal da aplicação
+
 function App() {
   const [user, setUser] = useState({});
   async function getData(){
