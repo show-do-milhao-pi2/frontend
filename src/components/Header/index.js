@@ -6,6 +6,8 @@ import userAvatarDefault from '../../assets/images/useravatar.png'
 import Noty from '../Notify/index'
 import { Link } from 'react-router-dom';
 
+// component que define o cabeçalho do site, onde tem as notificações, foto de usuário e botão de deslogar
+
 export default function Header(props){
   const [notify, setNotify] = useState(false)
   const { handleLogout } = useContext(Context);

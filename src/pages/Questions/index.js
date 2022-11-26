@@ -17,7 +17,7 @@ export default function Home() {
   useEffect(() => {
       getData()
   }, []);
-
+  console.log(questions)
   return (
     <>
       <div>
@@ -42,7 +42,10 @@ export default function Home() {
                   return (
                     <div key={question.id} >
                   {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                      <h3 style={{margin: '10px', color: 'red'}}>{question.statement}</h3>
+                      <div style={{margin: '10px', color: 'red', fontSize: '30px'}}>
+                        <span>{question.statement}</span>
+                      </div>
+                      <hr/>
                     </div>
                   );
                 
@@ -51,13 +54,17 @@ export default function Home() {
           </DivAccept>
 
           <DivNotAccept>
-            <h3> Perguntas não aceitas</h3>
+            <h2> Perguntas não aceitas</h2>
             {questions.map(question => {
               if(question.status.id === 3){
                   return (
                     <div key={question.id} >
                   {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                      <h3 style={{margin: '10px', color: 'red'}}>{question.statement}</h3>
+                        <div style={{margin: '10px', color: 'red', fontSize: '30px', display: 'flex', justifyContent: 'space-between'}}>
+                          <span>{question.statement}</span>
+                          <button style={{width: '70px', height: '30px', background: '#00ff00', border: 'none', color: '#fff', fontSize: '18px', fontWeight: 'bold', cursor: 'pointer'}}>Editar</button>
+                        </div> 
+                      <hr/>
                     </div>
                   );
                 

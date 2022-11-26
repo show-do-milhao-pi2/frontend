@@ -3,13 +3,15 @@ import { useState, useEffect } from 'react';
 import api from '../../api';
 import history from '../../history';
 
+// componente que define como é feito o cadastro e logout da aplicação
+
 export default function useAuth() {
   const [authenticated, setAuthenticated] = useState(false);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     const token = localStorage.getItem('token');
-
+    
     if (token) {
       api.defaults.headers.authorization = `${JSON.parse(token)}`;
       setAuthenticated(true);
@@ -25,7 +27,7 @@ export default function useAuth() {
       localStorage.setItem('id', JSON.stringify(id));
       localStorage.setItem('token', JSON.stringify(accessToken));
       setAuthenticated(true);
-      history.push('/home');
+      history.push('/');
     } catch (error) {
       console.log(error)
     }
@@ -39,7 +41,7 @@ export default function useAuth() {
       localStorage.setItem('token', JSON.stringify(accessToken));
       localStorage.setItem('id', JSON.stringify(id));
       setAuthenticated(true);
-      history.push('/home');
+      history.push('/');
     } catch (error) {
       console.log(error)
     }

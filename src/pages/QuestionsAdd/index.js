@@ -17,6 +17,7 @@ export default function Home() {
       statement,
       user: {id: JSON.parse(localStorage.getItem('id'))}
     };
+    console.log(localStorage.getItem('token'))
     const responseQuestionCreated = await api.post('/questions', data)
     console.log(responseQuestionCreated.data)
     const dataOptions = [{option: option1, question: responseQuestionCreated.data.id}, 

@@ -1,5 +1,7 @@
 import React from "react";
 
+// componente que mostra o ícone de notificação
+
 const notyIconStyle = {
   position: "relative",
   display: "inline"
