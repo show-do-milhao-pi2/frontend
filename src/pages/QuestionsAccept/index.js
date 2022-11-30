@@ -3,7 +3,7 @@ import { Div } from './styled';
 import api from '../../api';
 import history from '../../history'
 
-export default function Home(props) {
+export default function Accept(props) {
   const [approved, setApproved] = useState(false);
   const [load, setLoad] = useState(false);
   const [question, setQuestion] = useState({});
@@ -27,7 +27,7 @@ export default function Home(props) {
   async function handleSubmitNotAccept(){
     await api.put(`/notifications/${props.match.params.id}`, {evaluation: false,
 		answered: true,})
-    await api.put(`/questions/${question.id}`)
+    await api.put(`/questions/${question.id}`, {status: 3})
     history.push('/')
   }
   return (
@@ -61,7 +61,7 @@ export default function Home(props) {
       </Div>
       <div style={{display: 'flex', justifyContent: 'center'}}>
         <button onClick={handleSubmitAccept} style={{background: 'green', width: '70px', borderRadius: '10px', margin: '10px', height: '50px', border: 'none', color: '#fff', cursor: 'pointer'}}>Aceitar</button>
-        <button onClick={handleSubmitNotAccept} style={{background: 'red', width: '70px', borderRadius: '10px', margin: '10px', height: '50px', border: 'none', color: '#ff', cursor: 'pointer'}}>Reprovar</button>
+        <button onClick={handleSubmitNotAccept} style={{background: 'red', width: '70px', borderRadius: '10px', margin: '10px', height: '50px', border: 'none', color: '#fff', cursor: 'pointer'}}>Reprovar</button>
       </div>
     </div>
   )

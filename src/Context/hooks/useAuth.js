@@ -13,7 +13,7 @@ export default function useAuth() {
     const token = localStorage.getItem('token');
     
     if (token) {
-      api.defaults.headers.authorization = `${JSON.parse(token)}`;
+      api.defaults.headers.Authorization = `${JSON.parse(token)}`;
       setAuthenticated(true);
     }
 
@@ -21,25 +21,22 @@ export default function useAuth() {
   }, []);
   
   async function handleLogin(dataLogin) {
-    try {
       const { data: { accessToken, id } } = await api.post('/users/login', dataLogin)
-      api.defaults.headers.authorization = `${accessToken}`;
+      api.defaults.headers.Authorization = `${accessToken}`;
       localStorage.setItem('id', JSON.stringify(id));
       localStorage.setItem('token', JSON.stringify(accessToken));
       setAuthenticated(true);
       history.push('/');
-    } catch (error) {
-      console.log(error)
-    }
 
 
   }
   async function handleSignUp(dataSignUp) {
     try {
-      const { data: { accessToken, id } } = await api.post('/users', dataSignUp)
-      api.defaults.headers.authorization = `${accessToken}`;
+      const { data: { accessToken, user } } = await api.post('/users', dataSignUp)
+      api.defaults.headers.Authorization = `${accessToken}`;
+      console.log(user.id)
       localStorage.setItem('token', JSON.stringify(accessToken));
-      localStorage.setItem('id', JSON.stringify(id));
+      localStorage.setItem('id', JSON.stringify(user.id));
       setAuthenticated(true);
       history.push('/');
     } catch (error) {
