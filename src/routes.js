@@ -9,6 +9,11 @@ import SignUp from './pages/SignUp';
 import Questions from './pages/Questions';
 import QuestionsAdd from './pages/QuestionsAdd';
 import QuestionsAccept from './pages/QuestionsAccept';
+import QuestionsUpdate from './pages/QuestionsUpdate';
+import Game from './pages/Game';
+import User from './pages/User';
+import Statistic from './pages/Statistic';
+import Ranking from './pages/Ranking';
 
 function CustomRoute({ isPrivate, ...rest }) {
   const { loading, authenticated } = useContext(Context);
@@ -33,6 +38,11 @@ export default function Routes() {
       <CustomRoute isPrivate exact path="/questions" component={Questions} />
       <CustomRoute isPrivate exact path="/questions-add" component={QuestionsAdd} />
       <CustomRoute isPrivate exact path="/questions-accept/:id" component={QuestionsAccept} />
+      <CustomRoute isPrivate exact path="/questions-update/:id" component={QuestionsUpdate} />
+      <CustomRoute isPrivate exact path="/game" component={Game} />
+      <CustomRoute isPrivate exact path="/users/:id" component={User} />
+      <CustomRoute isPrivate exact path="/statistic/:id" component={Statistic} />
+      <CustomRoute isPrivate exact path="/ranking" component={Ranking} />
     </Switch>
   );
 }

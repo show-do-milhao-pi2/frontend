@@ -12,4 +12,5 @@ export const DivNotAccept = styled.div `
     height: 40vh;
     margin: 10px auto;
     background-color: #FFF;
+
 `;

@@ -31,18 +31,20 @@ export default function Home() {
               background: '#F0D514',
               borderRadius: '25px',
               cursor: 'pointer',
-              color: '#fff'
+              color: '#fff',
+              marginTop: '5vh'
             }}>Adicionar perguntas</button>
           </Link>
           </div>
           <DivAccept>
+            <div style={{overflowY: 'scroll', width: '100%', maxHeight: '40vh'}}>
             <h2> Perguntas aceitas</h2>
             {questions.map(question => {
               if(question.status.id === 2){
                   return (
                     <div key={question.id} >
                   {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                      <div style={{margin: '10px', color: 'red', fontSize: '30px'}}>
+                      <div style={{margin: '10px', color: 'green', fontSize: '1.2rem'}}>
                         <span>{question.statement}</span>
                       </div>
                       <hr/>
@@ -51,18 +53,22 @@ export default function Home() {
                 
               }
                 })}
+            </div>
           </DivAccept>
 
           <DivNotAccept>
+            <div  style={{overflowY: 'scroll', width: '100%', maxHeight: '40vh'}}>
             <h2> Perguntas não aceitas</h2>
             {questions.map(question => {
               if(question.status.id === 3){
                   return (
-                    <div key={question.id} >
+                    <div key={question.id}>
                   {/* eslint-disable-next-line react/jsx-no-target-blank */}
-                        <div style={{margin: '10px', color: 'red', fontSize: '30px', display: 'flex', justifyContent: 'space-between'}}>
+                        <div style={{margin: '10px', color: 'red', fontSize: '1.2rem', display: 'flex', justifyContent: 'space-between'}}>
                           <span>{question.statement}</span>
-                          <button style={{width: '70px', height: '30px', background: '#00ff00', border: 'none', color: '#fff', fontSize: '18px', fontWeight: 'bold', cursor: 'pointer'}}>Editar</button>
+                          <Link to = {'/questions-update/' + question.id} style={{cursor: 'pointer', textDecoration: 'none', color: '#fff'}}>
+                          <button style={{width: '70px', height: '5vhrem', background: '#00ff00', border: 'none', color: '#fff', fontSize: '18px', fontWeight: 'bold', cursor: 'pointer', padding: '5px'}}>Editar</button>
+                          </Link>
                         </div> 
                       <hr/>
                     </div>
@@ -70,6 +76,7 @@ export default function Home() {
                 
               }
                 })}
+            </div>
           </DivNotAccept>
         </div>
   

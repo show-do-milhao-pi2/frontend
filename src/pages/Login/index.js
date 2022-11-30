@@ -8,6 +8,7 @@ export default function Login() {
   const { handleLogin } = useContext(Context);
   const [nickname, setNickname] = useState("");
   const [password, setPassword] = useState("");
+  const [valid, setValid] = useState(true);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,14 +16,20 @@ export default function Login() {
       nickname,
       password,
     };
-    await handleLogin(data);
+    try {
+      await handleLogin(data);
+    } catch (error) {
+      setValid(false)
+    }
   };
 
   const pushSignUp = (e) => {
     e.preventDefault();
     history.push('/sign-up');
   }
-
+  function write(){
+    setValid(true)
+  }
   return (
     <div>
         <Logo>
@@ -63,6 +70,7 @@ export default function Login() {
               textAlign: 'center'
           }
           }
+          onKeyUp={write}
           />
 
           <label style={
@@ -74,6 +82,7 @@ export default function Login() {
           }>Senha</label>
           <input 
           type='password' 
+          onKeyUp={write}
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           style= {
@@ -89,6 +98,10 @@ export default function Login() {
           }
           />
   
+          {!valid && 
+          <div style={{width: '100%', display: 'flex', justifyContent: 'center', color: 'red', marginTop: '1vh'}}>
+          Usuário ou senha inválidos.
+          </div>}
           <div style={{width: '100%', display: 'flex', justifyContent: 'center'}}>
             <button type="button" onClick={handleSubmit} 
             style={
